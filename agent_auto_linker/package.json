@@ -1,0 +1,49 @@
+{
+  "name": "agent-auto-linker",
+  "displayName": "Agent Auto Linker (Master Sync)",
+  "description": "Smartly links a master .agent configuration folder to your current workspace and ensures it's ignored in git.",
+  "version": "2.10.2",
+  "publisher": "KevinJ",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Agent Auto Linker",
+      "properties": {
+        "agentAutoLinker.versionLabel": {
+          "type": "string",
+          "default": "v2.10.2 (Stabilized Copy Mode)",
+          "enum": ["v2.10.2 (Stabilized Copy Mode)"],
+          "description": "📦 Current installed version (Last Modified: 2026-03-22 18:56)"
+        },
+        "agentAutoLinker.masterAgentPath": {
+          "type": "string",
+          "default": "~/.claude",
+          "description": "Absolute path to the master .agent folder. Supports tilde (~) for the home directory."
+        },
+        "agentAutoLinker.enableAutoLink": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically create a symbolic link named .agent when opening a workspace."
+        },
+        "agentAutoLinker.enableGitignoreUpdate": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically add .agent to .gitignore if missing."
+        }
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kevinjhur/agent-auto-linker"
+  }
+}
