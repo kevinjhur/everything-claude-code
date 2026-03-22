@@ -293,12 +293,13 @@ module.exports = {
   createFlatRuleOperations,
   createInstallTargetAdapter,
   createManagedOperation,
-  createManagedScaffoldOperation: (moduleId, sourceRelativePath, destinationPath, strategy) => (
+  createManagedScaffoldOperation: (moduleId, sourceRelativePath, destinationPath, strategy, extra = {}) => (
     createManagedOperation({
       moduleId,
       sourceRelativePath,
       destinationPath,
       strategy,
+      ...extra,
     })
   ),
   createNamespacedFlatRuleOperations,

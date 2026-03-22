@@ -51,13 +51,14 @@ module.exports = createInstallTargetAdapter({
           ];
         }
 
-        if (sourceRelativePath === 'agents') {
+        if (sourceRelativePath === 'agents' || sourceRelativePath.startsWith('agents/')) {
           return [
             createManagedScaffoldOperation(
               module.id,
               sourceRelativePath,
-              path.join(targetRoot, 'skills'),
-              'preserve-relative-path'
+              targetRoot,
+              'sync-root-children',
+              { scaffoldOnly: false }
             ),
           ];
         }

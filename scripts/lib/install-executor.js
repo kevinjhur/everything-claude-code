@@ -86,6 +86,8 @@ function validateLegacyTarget(target) {
 const IGNORED_DIRECTORY_NAMES = new Set([
   'node_modules',
   '.git',
+  '.agent',
+  '.agents',
 ]);
 
 function listFilesRecursive(dirPath) {
@@ -259,6 +261,17 @@ function planClaudeLegacyInstall(context) {
       sourceRelativeDir: path.join('rules', language),
       destinationDir: path.join(rulesDir, language),
     });
+
+    const agentSourceDir = path.join(context.sourceRoot, 'agents', language);
+    if (fs.existsSync(agentSourceDir)) {
+      addRecursiveCopyOperations(operations, {
+        moduleId: 'legacy-claude-agents',
+        sourceRoot: context.sourceRoot,
+        sourceRelativeDir: path.join('agents', language),
+        destinationDir: path.join(targetRoot, '.agent'),
+        strategy: 'sync-root-children',
+      });
+    }
   }
 
   return {

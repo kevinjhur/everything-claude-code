@@ -194,6 +194,29 @@ npm install        # or: pnpm install | yarn install | bun install
 npx ecc-install typescript
 ```
 
+### Step 3: Install Master Agents (Unified)
+
+The ECC installer now supports language-specific agent synchronization using the native `--target` system.
+
+```bash
+# Install Global Agents (~/.claude/.agent) + Rules (Korean)
+./install.sh ko
+
+# Install Local Agents (./.agent) + Rules (Korean)
+./install.sh --target antigravity ko
+
+# Install Global Agents + Rules (English)
+./install.sh en
+```
+
+```powershell
+# Windows PowerShell (Global)
+.\install.ps1 ko
+
+# Windows PowerShell (Local Antigravity)
+.\install.ps1 --target antigravity ko
+```
+
 For manual install instructions see the README in the `rules/` folder.
 
 ### Step 3: Start Using
@@ -632,8 +655,12 @@ If you prefer manual control over what's installed:
 # Clone the repo
 git clone https://github.com/affaan-m/everything-claude-code.git
 
-# Copy agents to your Claude config
-cp everything-claude-code/agents/*.md ~/.claude/agents/
+# Copy agents to your Claude config (English)
+mkdir -p ~/.claude/.agent/agents
+cp everything-claude-code/agents/en/agents/*.md ~/.claude/.agent/agents/
+
+# Copy agents to your Claude config (Korean)
+# cp everything-claude-code/agents/ko/agents/*.md ~/.claude/.agent/agents/
 
 # Copy rules (common + language-specific)
 cp -r everything-claude-code/rules/common/* ~/.claude/rules/

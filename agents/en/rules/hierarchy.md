@@ -1,7 +1,7 @@
 # Hierarchy - Melting Edition 🏯
 
 ## 1. The Owner
-- **CEO (Representative)**: Holds ultimate authority and final approval for the project.
+- **CEO (Representative)**: The user's title. Holds ultimate authority and final approval for the project.
 
 ## 2. Project Leader (PL)
 - **[PL] Agent**: Analyzes requirements from the CEO, establishes implementation plans (Planner), and orchestrates specialized sub-agents.

@@ -19,13 +19,30 @@
       "stability": "stable"
     },
     {
-      "id": "agents-core",
+      "id": "agents-en",
       "kind": "agents",
-      "description": "Agent definitions and project-level agent guidance.",
+      "description": "English agent definitions and project-level agent guidance.",
       "paths": [
-        ".agents",
-        "agents",
-        "AGENTS.md"
+        "agents/en"
+      ],
+      "targets": [
+        "claude",
+        "cursor",
+        "antigravity",
+        "codex",
+        "opencode"
+      ],
+      "dependencies": [],
+      "defaultInstall": true,
+      "cost": "light",
+      "stability": "stable"
+    },
+    {
+      "id": "agents-ko",
+      "kind": "agents",
+      "description": "Korean agent definitions and project-level agent guidance.",
+      "paths": [
+        "agents/ko"
       ],
       "targets": [
         "claude",

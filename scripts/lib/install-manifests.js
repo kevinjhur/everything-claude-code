@@ -16,7 +16,6 @@ const COMPONENT_FAMILY_PREFIXES = {
 const LEGACY_COMPAT_BASE_MODULE_IDS_BY_TARGET = Object.freeze({
   claude: [
     'rules-core',
-    'agents-core',
     'commands-core',
     'hooks-runtime',
     'platform-configs',
@@ -24,7 +23,6 @@ const LEGACY_COMPAT_BASE_MODULE_IDS_BY_TARGET = Object.freeze({
   ],
   cursor: [
     'rules-core',
-    'agents-core',
     'commands-core',
     'hooks-runtime',
     'platform-configs',
@@ -32,7 +30,6 @@ const LEGACY_COMPAT_BASE_MODULE_IDS_BY_TARGET = Object.freeze({
   ],
   antigravity: [
     'rules-core',
-    'agents-core',
     'commands-core',
   ],
 });
@@ -47,6 +44,8 @@ const LEGACY_LANGUAGE_ALIAS_TO_CANONICAL = Object.freeze({
   python: 'python',
   swift: 'swift',
   typescript: 'typescript',
+  en: 'en',
+  ko: 'ko',
 });
 const LEGACY_LANGUAGE_EXTRA_MODULE_IDS = Object.freeze({
   go: ['framework-language'],
@@ -56,6 +55,8 @@ const LEGACY_LANGUAGE_EXTRA_MODULE_IDS = Object.freeze({
   python: ['framework-language'],
   swift: [],
   typescript: ['framework-language'],
+  en: ['agents-en'],
+  ko: ['agents-ko'],
 });
 
 function readJson(filePath, label) {
@@ -263,9 +264,7 @@ function resolveLegacyCompatibilitySelection(options = {}) {
     || LEGACY_COMPAT_BASE_MODULE_IDS_BY_TARGET.claude;
   const moduleIds = dedupeStrings([
     ...baseModuleIds,
-    ...(target === 'antigravity'
-      ? []
-      : canonicalLegacyLanguages.flatMap(language => LEGACY_LANGUAGE_EXTRA_MODULE_IDS[language] || [])),
+    ...canonicalLegacyLanguages.flatMap(language => LEGACY_LANGUAGE_EXTRA_MODULE_IDS[language] || []),
   ]);
 
   assertKnownModuleIds(moduleIds, manifests);

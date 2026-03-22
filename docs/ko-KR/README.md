@@ -137,6 +137,29 @@ cd everything-claude-code
 
 수동 설치 방법은 `rules/` 폴더의 README를 참고하세요.
 
+### 3단계: 마스터 에이전트 설치 (통합)
+
+ECC 설치 스크립트는 이제 기존의 `--target` 시스템과 연동되어 언어별 에이전트 동기화를 지원합니다.
+
+```bash
+# 전역 에이전트 (~/.claude/.agent) 및 룰 설치 (한국어)
+./install.sh ko
+
+# 로컬 에이전트 (./.agent) 및 룰 설치 (한국어)
+./install.sh --target antigravity ko
+
+# 영어 버전 설치
+./install.sh en
+```
+
+```powershell
+# Windows PowerShell (전역)
+.\install.ps1 ko
+
+# Windows PowerShell (로컬 Antigravity)
+.\install.ps1 --target antigravity ko
+```
+
 ### 3단계: 사용 시작
 
 ```bash
@@ -405,8 +428,12 @@ Claude Code v2.1+는 설치된 플러그인의 `hooks/hooks.json`을 **자동으
 # 저장소 클론
 git clone https://github.com/affaan-m/everything-claude-code.git
 
-# 에이전트 복사
-cp everything-claude-code/agents/*.md ~/.claude/agents/
+# 에이전트 복사 (영어)
+mkdir -p ~/.claude/.agent/agents
+cp everything-claude-code/agents/en/agents/*.md ~/.claude/.agent/agents/
+
+# 에이전트 복사 (한국어)
+# cp everything-claude-code/agents/ko/agents/*.md ~/.claude/.agent/agents/
 
 # 룰 복사 (common + 언어별)
 cp -r everything-claude-code/rules/common/* ~/.claude/rules/
