@@ -48,3 +48,11 @@ For complex problems, use split role sub-agents:
 - Security expert
 - Consistency reviewer
 - Redundancy checker
+
+## Anti-Loop & Conciseness Guidelines
+
+1. **No Redundant Filler**: Skip phrases like "Executing now," "Please wait," or "Starting search..." before calling a tool. Call the tool immediately without unnecessary confirmation.
+2. **Direct Action**: If you detect the same reasoning or output looping more than twice, stop immediately and ask for user intervention or pivot to a different strategy.
+3. **Minimize Icons & Fluff**: Use emojis, flowery language, and complex formatting sparingly. Focus on delivering clear, actionable technical data.
+4. **Tool-First Response**: Prioritize showing tool results over explaining what you are *about* to do multiple times.
+5. **Context Management**: Avoid repeating previous thoughts or instructions that are already visible in the conversation history.
