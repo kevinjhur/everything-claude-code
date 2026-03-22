@@ -97,7 +97,7 @@
     "ecc-install": "scripts/install-apply.js"
   },
   "scripts": {
-    "postinstall": "echo '\\n  ecc-universal installed!\\n  Run: npx ecc typescript\\n  Compat: npx ecc-install typescript\\n  Docs: https://github.com/affaan-m/everything-claude-code\\n'",
+    "postinstall": "./install.sh",
     "lint": "eslint . && markdownlint '**/*.md' --ignore node_modules",
     "harness:audit": "node scripts/harness-audit.js",
     "claw": "node scripts/claw.js",
